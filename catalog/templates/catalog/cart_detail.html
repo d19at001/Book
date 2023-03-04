@@ -1,0 +1,14 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    {% if cart.items.all %}
+
+        {% for item in cart.items.all %}
+            <p>{{item}}</p>
+        {% endfor %}
+
+    {% else %}
+        <p>{{"Gio Hang Trong !"}}</p>
+    {% endif %}
+
+{% endblock %}

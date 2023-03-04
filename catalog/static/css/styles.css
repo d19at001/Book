@@ -1,0 +1,43 @@
+.sidebar-nav {
+    margin-top: 20px;
+    padding: 0;
+    list-style: none;
+}
+#card {
+    margin-top: 25px;
+}
+#content {
+    text-align: center;
+}
+
+.book_detail {
+    float: left;
+    padding: 45px;
+    text-align: left;
+}
+#book_list {
+    text-align: center;
+}
+
+  
+  /* Xóa float khác sau các cột */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+  
+  /* Bố cục linh hoạt: ba cột xếp chồng lên nhau thay vì cạnh nhau khi màn hình 
+  có chiều rộng dưới 600px */
+@media screen and (max-width:600px) {
+    .column {
+      width: 100%;
+    }
+}
+
+.checked {
+    color: orange;
+}
+
+  
+

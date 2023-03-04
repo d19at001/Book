@@ -1,0 +1,38 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+  <div class = "book_detail">
+    <img src="{{book.image.url}}" width="300px" height="500px" />
+  </div>
+  <div class = "book_detail" id = "info_book">
+      <h3>{{book.title}}</h3>
+      <h4><label>Tác Giả:</label> {{ book.author}} </h4>
+      <h4 style="color:lightblue;"><label>Giá:</label> {{ book.price}}<label> VND</label> </h4>
+      <form action="{% url 'add-cart' book.id %}" method="POST">
+          {% csrf_token %}
+          <p> So luong <input type="number" name="quantity" value="" size="25" maxlength="15" /> </p>
+          <input type = "submit" value="Thêm vào giỏ hàng">
+      </form>
+  </div>
+</div>
+<div>
+  {% if user.username %}
+      <form action="{% url 'book-detail' book.id %}" method="POST">
+          {% csrf_token %}
+          <p><label>Bình luận:</label></p>
+          {{rate_form}}
+          <br/>
+          <input type="submit" value="Bình luận"/>
+      </form>
+  {% endif %}
+</div>
+
+<div>
+  {% for comment in book.comment_set.all %}
+  <h4><strong>{{comment.assessor}}</strong></h4>
+  <p>{{comment.star}}{{" SAO"}}</p>
+  <p>{{comment.content}}</p>
+{% endfor %}
+</div>
+{% endblock %}
